@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Oranienbaum');
+
+body {
+	background-color: rgb(20, 12, 18);
+	color: #f0f7f4;
+	height: 100vh;
+	padding: 5px;
+	font-family: 'Oranienbaum', serif;
+}
+
+header .navbar {
+	padding: 0.5em;
+	box-shadow: 1px 1px 13px 1px #000;
+}
+
+.card-feel {
+    margin-top: 30px;
+	padding: 5em;
+	box-shadow: 5px 5px 10px 5px #000;
+}
+
+.hero {
+    font-size: 40px;
+    font-weight: bold;
+    padding: 20px;
+}

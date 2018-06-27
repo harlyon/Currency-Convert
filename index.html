@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <meta name="description" content="Currency Convert.">
+    <meta name="author" content="Harry">
+    <title>Currency Convert</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+<body>
+
+    <!-- contents section -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error_msg text-center"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="results"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="container">
+                <h1 class="lead text-center hero">Select Currency</h1>
+                <form method="post" onsubmit="return convertCurrency()">
+                    <div class="form-group">
+                        <label for="convert-amount">Amount</label>
+                        <input type="number" min="1" step=any id="convert-amount" value="1" class="form-control" placeholder="Enter Amount">
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="from-currency">Convert From</label>
+                        <select class="form-control" id="from-currency"></select>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="to-currency">Convert To</label>
+                        <select class="form-control" id="to-currency"></select>
+                    </div>
+                    <br />
+                    <div class="form-group text-center">
+                        <label for="convert-btn"></label>
+                        <button class="btn btn-default" id="convert-btn">Convert</button>
+                    </div>
+                    <br />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- notification section -->
+    <!-- alert notification -->
+    <div class="notify"></div>
+
+    <!-- scripts section -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+</body>
+</html>

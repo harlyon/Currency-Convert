@@ -1,0 +1,13 @@
+{
+  "short_name": "AlcFx",
+  "name": "AlcFx",
+  "icons": [{
+    "src": "img/logo.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  }],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#EEEEEE",
+  "theme_color": "#EEEEEE"
+}
