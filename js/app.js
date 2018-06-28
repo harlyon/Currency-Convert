@@ -9,31 +9,19 @@ $(document).ready(function() {
 | SERVICE WORKER SECTION
 |------------------------------------------
 */
-// init page and register services worker
-if (navigator.serviceWorker) {
-    // register the services worker
-    registerServiceWorker();
 
-    // listen for controller change
-    navigator.serviceWorker.addEventListener('controllerchange', function() {
-        window.location.reload();
-    });
-
-} else {
-    console.log('browser does not support Services Worker !');
-}
-
-// Register the service worker
-if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('/sw.js').then(function(registration) {
-    // Registration was successful
-    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-}).catch(function(err) {
-    // registration failed :(
-    	console.log('ServiceWorker registration failed: ', err);
-    });
-}
-
+    if ('serviceWorker' in navigator) {
+        if (location.hostname === 'harlyon.github.io') {
+            navigator.serviceWorker.register('sw.js', { scope: location.pathname }).then(function() {
+                console.log('service worker registered');
+            })
+        } else {
+            navigator.serviceWorker.register('sw.js').then(function() {
+                console.log('service worker registered');
+            })
+        }
+    }
+    
 // track sw state
 function trackInstalling(worker) {
     worker.addEventListener('statechange', function() {
