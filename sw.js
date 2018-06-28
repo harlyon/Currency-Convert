@@ -1,7 +1,7 @@
 // register cache name
 var appCacheName = 'static-v1';
 var appCacheAssets = [
-	'/',
+	'/index.html',
 	'css/app.css',
 	'js/app.js',
 	'manifest.json',
