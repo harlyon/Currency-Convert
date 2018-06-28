@@ -85,7 +85,7 @@ if (!window.indexedDB) {
 // open database 
 function openDatabase() {
     // return db instances
-    const DB_NAME = 'alcfx';
+    const DB_NAME = 'currencyConvert';
     const database = indexedDB.open(DB_NAME, 1);
 
     // on error catch errors 
