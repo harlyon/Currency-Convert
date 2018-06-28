@@ -23,28 +23,14 @@ if (navigator.serviceWorker) {
     console.log('browser does not support Services Worker !');
 }
 
-// register sw
-function registerServiceWorker() {
-    // register the service worker
-    navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function(sw) {
-        // check service worker controller
-        if (!navigator.serviceWorker.controller) return;
-
-        // on waiting state
-        if (sw.waiting) {
-            updateIsReady(sw.waiting);
-            return;
-        }
-
-        // on installing state
-        if (sw.installing) {
-            trackInstalling(sw.installing);
-        }
-
-        // on updated found
-        sw.addEventListener('updatefound', function() {
-            trackInstalling(sw.installing);
-        });
+// Register the service worker
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker.register('/sw.js').then(function(registration) {
+    // Registration was successful
+    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+}).catch(function(err) {
+    // registration failed :(
+    	console.log('ServiceWorker registration failed: ', err);
     });
 }
 
