@@ -1,13 +1,9 @@
 {
-  "short_name": "AlcFx",
-  "name": "AlcFx",
-  "icons": [{
-    "src": "img/logo.png",
-    "sizes": "144x144",
-    "type": "image/png"
-  }],
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#EEEEEE",
-  "theme_color": "#EEEEEE"
+  "name": "Currency Converter",
+  "short_name": "CC",
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "display": "browser",
+  "scope": "/",
+  "start_url": "/"
 }
