@@ -15,46 +15,53 @@ var appCacheAssets = [
 ];
 
 // on install state
-self.addEventListener('install', function(event){
-	event.waitUntil(
-		caches.open(appCacheName).then(function(cache){
-			return cache.addAll(appCacheAssets);
-		})
+self.addEventListener('install', e => {
+	console.log('[ServiceWorker] Install');
+	e.waitUntil(
+	  caches.open(cacheName).then(cache => {
+		console.log('[ServiceWorker] Caching app shell');
+		return cache.addAll(appCacheAssets);
+	  }),
 	);
-});
+  });
+  
 
 // on activate state
-self.addEventListener('activate', function(event){
-	event.waitUntil(
-		caches.keys().then(function(cacheNames){
-			return Promise.all(
-				cacheNames.filter(function(cacheName){
-					return cacheName.startsWith('wnes-') && cacheName !== appCacheName;
-				}).map(function(cacheName){
-					return caches.delete(cacheName);
-				})
-			);
-		})
+self.addEventListener('activate', e => {
+	console.log('[ServiceWorker] Activate');
+	e.waitUntil(
+	  caches.keys().then(keyList =>
+		Promise.all(
+		  keyList.map(key => {
+			if (key !== cacheName) {
+			  return caches.delete(key);
+			}
+		  }),
+		),
+	  ),
 	);
-});
+  });
 
 // on fetch state
-self.addEventListener('fetch', function(event){
-	// event.respondWith('hello');
-	// console.log('hello');
-	event.respondWith(
-		caches.match(event.request).then(function(response){
-			if(response){
-				return response;
-			}
-			return fetch(event.request);
-		})
-	);
-});
-
-// on message
-self.addEventListener('message', function(event){
-	if(event.data.action == 'skipWaiting'){
-		self.skipWaiting();
+self.addEventListener('fetch', event => {
+	const dataUrl = 'https://free.currencyconverterapi.com/api/v5/currencies';
+  
+	// If contacting API, fetch and then cache the new data
+	if (event.request.url.indexOf(dataUrl) === 0) {
+	  event.respondWith(
+		fetch(event.request).then(response =>
+		  caches.open(dataCacheName).then(cache => {
+			cache.put(event.request.url, response.clone());
+			return response;
+		  }),
+		),
+	  );
+	} else {
+	  // Respond with cached content if they are matched
+	  event.respondWith(
+		caches
+		  .match(event.request)
+		  .then(response => response || fetch(event.request)),
+	  );
 	}
-});
+  });
