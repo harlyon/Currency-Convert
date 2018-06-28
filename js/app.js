@@ -24,13 +24,29 @@ if (navigator.serviceWorker) {
 }
 
 // register sw
-if (!navigator.serviceWorker) return; //Feature detection
+function registerServiceWorker() {
+    // register the service worker
+    navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function(sw) {
+        // check service worker controller
+        if (!navigator.serviceWorker.controller) return;
 
-navigator.serviceWorker.register("/sw.js").then(function() { //Include the service worker js file
-  //Registration worked
-}).catch(function() {
-  //Registration didn't work
-});
+        // on waiting state
+        if (sw.waiting) {
+            updateIsReady(sw.waiting);
+            return;
+        }
+
+        // on installing state
+        if (sw.installing) {
+            trackInstalling(sw.installing);
+        }
+
+        // on updated found
+        sw.addEventListener('updatefound', function() {
+            trackInstalling(sw.installing);
+        });
+    });
+}
 
 // track sw state
 function trackInstalling(worker) {
