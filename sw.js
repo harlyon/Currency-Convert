@@ -7,7 +7,6 @@ var appCacheAssets = [
 	'js/app.js',
 	'manifest.json',
 	'https://fonts.googleapis.com/css?family=Oranienbaum',
-	// 'https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css',
 	'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
 	'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js',
 	'https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js',
