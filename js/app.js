@@ -206,7 +206,7 @@ function convertCurrency() {
 				<div class="card-feel container text-center">
                     <h1 class="small text-center"> <b>${amount}</b>  <b>${val.fr}</b> to <b>${val.to}</b> converted successfully !</h1>
 					<hr />
-					Exchange rate for <b>${amount}</b> <b>${val.fr}</b> to <b>${val.to}</b> is: <br /> 
+					Exchange rate for<br /> <strong><b>${amount}</b>  <b>${val.fr}</b> to <b>${val.to}</b></strong> <br />  is: 
 					<b>${numeral(amount * val.val).format('0.000')}</b>
 				</div>
 			`);

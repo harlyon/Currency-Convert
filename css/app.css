@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Oranienbaum');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
 
 body {
 	background-color: rgb(20, 12, 18);
 	color: #f0f7f4;
 	height: 100vh;
 	padding: 5px;
-	font-family: 'Oranienbaum', serif;
+	font-family: 'Poppins', sans-serif;
 }
 
 header .navbar {
